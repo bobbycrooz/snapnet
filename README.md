@@ -1,17 +1,13 @@
-# after clonning run npm install 
 
-## user must register their company before they can access our api
+# snapnet task enpoint
 
-# baseurl/register-company
+User must register their company before they can access our api 
 
-# user must include their recieved key in their "X-API-KEY" field of their request header
+# Authorization
 
-# start the app in local 
+user must include their recieved key in their "X-API-KEY" field of their request header
 
-npm run dev
+## Documentation
 
-build the app
+[Postman Documentation](https://api.postman.com/collections/13804036-9439db2a-5a36-4286-975d-75490d48b718?access_key=PMAT-01GQMGWC6NHSHF57WE8TGYC24M)
 
-npm run build
-
-(endpoint documentation:) [https://api.postman.com/collections/13804036-9439db2a-5a36-4286-975d-75490d48b718?access_key=PMAT-01GQMGWC6NHSHF57WE8TGYC24M]
