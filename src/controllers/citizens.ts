@@ -33,7 +33,7 @@ export const allCitizens = async (req: Request, res: Response) => {
   // if (!name) return res.send(" name  provided").end();
 
   try {
-    let allCitizens = await CitizensModel.find({}, "name gender _id");
+    let allCitizens = await CitizensModel.find({}, "fullname gender _id");
     let counts = await CitizensModel.countDocuments();
     console.log(counts);
 
