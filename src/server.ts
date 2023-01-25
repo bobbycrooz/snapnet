@@ -1,10 +1,12 @@
 import express, { NextFunction, Request, Response } from "express";
 import bodyParser from "body-parser";
-import StateModel from "./models/stateModel";
-import LgaModel from "./models/lgaModel";
+
 import { databaseHelper } from "./util/databaseHelper";
-import Ward from "./models/wardsModel";
-import { allCitizens, citizenController } from "./controllers/citizens";
+import {
+  allCitizens,
+  citizenController,
+  citizenDetails,
+} from "./controllers/citizens";
 import { allWard, wardInsertManyController } from "./controllers/ward";
 import { allLga, lgaInsertManyController } from "./controllers/lgs";
 import { stateController } from "./controllers/states";
@@ -13,8 +15,6 @@ import {
   companyLogin,
   registerCompany,
 } from "./controllers/auth";
-
-// import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
 (async () => {
   // Init the Express application
@@ -31,25 +31,27 @@ import {
   // controller
 
   // routes
+  // state
   app.get("/all-states", authorizeCompany, stateController);
+
+  // lga
 
   app.post("/lga", lgaInsertManyController);
   app.get("/all-lga", authorizeCompany, allLga);
 
+  // ward
   app.post("/ward", wardInsertManyController);
   app.get("/all-ward", authorizeCompany, allWard);
 
+  // citizen
   app.post("/create-citizen", authorizeCompany, citizenController);
   app.get("/all-citizens", authorizeCompany, allCitizens);
+  app.get("/citizen", authorizeCompany, citizenDetails);
 
+  // auth
   app.post("/register-company", registerCompany);
   app.post("/login-company", companyLogin);
 
-  // app.post("/admin", ImageFilterMiddleware, ImageController);
-  // app.get("/filteredimage", ImageFilterMiddleware, ImageController);
-
-  // Root Endpoint
-  // Displays a simple message to the user
   app.get("/", async (req: Request, res: Response) => {
     res.send("try GET /all-cities");
   });
