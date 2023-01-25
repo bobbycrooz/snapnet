@@ -28,9 +28,7 @@ export const registerCompany = async (req: Request, res: Response) => {
 
     const companyKey = uuidv4();
 
-    const key = jwt.sign(email, secretKey, {
-      expiresIn: "24h",
-    });
+    const key = jwt.sign(email, secretKey);
 
     let newCompany = {
       email,
@@ -92,7 +90,11 @@ export const authorizeCompany = async (
   res: Response,
   next: NextFunction
 ) => {
-  const apiKey: string | string[] = req.headers["X-API-KEY"];
+  const apiKey: string | string[] = req.headers["x-api-key"];
+
+  console.log(req.headers);
+
+  console.log(apiKey);
 
   if (!apiKey)
     return res.status(403).send("Invalid Token, Please login to continue");
