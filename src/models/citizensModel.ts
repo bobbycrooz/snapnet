@@ -21,10 +21,6 @@ const citizensSchema = new Schema(
       type: String,
     },
 
-    password: {
-      type: String,
-    },
-
     phone: {
       type: String,
     },

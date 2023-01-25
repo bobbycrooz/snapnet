@@ -65,9 +65,10 @@ export const companyLogin = async (
 
   try {
     const key = jwt.sign(email, secretKey);
+
     let existingcompany = await CompanyModel.find({ email });
 
-    if (existingcompany.length < 1)
+    if (existingcompany.length > 0)
       return res
         .json({
           message: "log in successfully",
