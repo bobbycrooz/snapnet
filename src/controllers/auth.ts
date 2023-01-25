@@ -104,7 +104,7 @@ export const authorizeCompany = async (
       return res.status(403).send("Invalid Token, Please login to continue");
 
     //   @ts-ignore
-    return String(decode.email);
+    return decode;
   });
 
   console.log("AUTHORIZE COMPANY", companyEmail);
