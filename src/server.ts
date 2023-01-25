@@ -8,6 +8,11 @@ import { allCitizens, citizenController } from "./controllers/citizens";
 import { allWard, wardInsertManyController } from "./controllers/ward";
 import { allLga, lgaInsertManyController } from "./controllers/lgs";
 import { stateController } from "./controllers/states";
+import {
+  authorizeCompany,
+  companyLogin,
+  registerCompany,
+} from "./controllers/auth";
 
 // import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
@@ -26,7 +31,7 @@ import { stateController } from "./controllers/states";
   // controller
 
   // routes
-  app.get("/all-states", stateController);
+  app.get("/all-states", authorizeCompany, stateController);
 
   app.post("/lga", lgaInsertManyController);
   app.get("/all-lga", allLga);
@@ -34,8 +39,11 @@ import { stateController } from "./controllers/states";
   app.post("/ward", wardInsertManyController);
   app.get("/all-ward", allWard);
 
-  app.post("/create-citizen", citizenController);
-  app.get("/all-citizens", allCitizens);
+  app.post("/create-citizen", authorizeCompany, citizenController);
+  app.get("/all-citizens", authorizeCompany, allCitizens);
+
+  app.post("/register-company", registerCompany);
+  app.post("/login-company", companyLogin);
 
   // app.post("/admin", ImageFilterMiddleware, ImageController);
   // app.get("/filteredimage", ImageFilterMiddleware, ImageController);

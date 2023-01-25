@@ -21,7 +21,9 @@
   "homepage": "https://github.com/grutt/udacity-c2-image-filter#readme",
   "devDependencies": {
     "@types/express": "^4.17.0",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^11.13.17",
+    "@types/uuid": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.40",
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
@@ -29,8 +31,10 @@
   "dependencies": {
     "express": "^4.17.1",
     "jimp": "^0.16.2",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.15",
     "mongoose": "^6.8.4",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "uuid": "^9.0.0"
   }
 }
