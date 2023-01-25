@@ -31,13 +31,13 @@ import {
   // controller
 
   // routes
-  app.get("/all-states", stateController);
+  app.get("/all-states", authorizeCompany, stateController);
 
   app.post("/lga", lgaInsertManyController);
-  app.get("/all-lga", allLga);
+  app.get("/all-lga", authorizeCompany, allLga);
 
   app.post("/ward", wardInsertManyController);
-  app.get("/all-ward", allWard);
+  app.get("/all-ward", authorizeCompany, allWard);
 
   app.post("/create-citizen", authorizeCompany, citizenController);
   app.get("/all-citizens", authorizeCompany, allCitizens);

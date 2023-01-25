@@ -67,7 +67,7 @@ export const companyLogin = async (
     const key = jwt.sign(email, secretKey);
     let existingcompany = await CompanyModel.find({ email });
 
-    if (existingcompany)
+    if (existingcompany.length < 1)
       return res
         .json({
           message: "log in successfully",
@@ -91,10 +91,6 @@ export const authorizeCompany = async (
   next: NextFunction
 ) => {
   const apiKey: string | string[] = req.headers["x-api-key"];
-
-  console.log(req.headers);
-
-  console.log(apiKey);
 
   if (!apiKey)
     return res.status(403).send("Invalid Token, Please login to continue");
