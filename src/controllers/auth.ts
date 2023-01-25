@@ -18,7 +18,7 @@ export const registerCompany = async (req: Request, res: Response) => {
 
     console.log(existingcompany);
 
-    if (existingcompany)
+    if (existingcompany.length > 0)
       return res
         .status(403)
         .json({

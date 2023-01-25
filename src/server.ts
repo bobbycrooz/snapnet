@@ -31,7 +31,7 @@ import {
   // controller
 
   // routes
-  app.get("/all-states", authorizeCompany, stateController);
+  app.get("/all-states", stateController);
 
   app.post("/lga", lgaInsertManyController);
   app.get("/all-lga", allLga);
@@ -51,7 +51,7 @@ import {
   // Root Endpoint
   // Displays a simple message to the user
   app.get("/", async (req: Request, res: Response) => {
-    res.send("try GET /filteredimage?image_url={{}}");
+    res.send("try GET /all-cities");
   });
 
   //connect to db
